@@ -8,14 +8,15 @@ export default function Header() {
     gap-4
     "
     >
-      <Logo width={40} height={50} />
+      <Logo width={40} height={50}
+      />
       <div className="flex gap-4">
-        <Link className=" text-black" href="/home" >
+        {/* <Link className=" text-black" href="/home" >
           Inicial
         </Link>
-        <Link className=" text-black" href="/about">
-          sobre
-        </Link>
+        <Link className=" text-black" href="/form">
+          Formulário
+        </Link> */}
       </div>
     </header>
   );
