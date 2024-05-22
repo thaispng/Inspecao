@@ -17,18 +17,18 @@ export const authOptions = {
                     await connectMongoDB();
                     const user = await User.findOne({ email });
                     if (!user) {
-                        console.log('User not found');
+                        console.log('Usuário não encontrado');
                         return null;
                     }
                     const passwordMatch = await bcrypt.compare(password, user.password);
                     if (!passwordMatch) {
-                        console.log('Password does not match');
+                        console.log('Senha não corresponde');
                         return null;
                     }
                     return user;
                 } catch (error) {
-                    console.error('Authorize error:', error);
-                    throw new Error('Authorize error');
+                    console.error('Erro de autorização::', error);
+                    throw new Error('Erro de autorização:');
                 }
             },
         }),
