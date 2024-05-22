@@ -1,6 +1,11 @@
-import Link from "next/link";
+
 import Logo from "@/components/_ui/Logo/Logo";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 export default function Header() {
+  const { data: session } = useSession();
+
   return (
     <header
       className="flex justify-between items-center p-4 bg-transparent text-white
@@ -11,12 +16,13 @@ export default function Header() {
       <Logo width={40} height={50}
       />
       <div className="flex gap-4">
-        {/* <Link className=" text-black" href="/home" >
-          Inicial
-        </Link>
-        <Link className=" text-black" href="/form">
-          Formulário
-        </Link> */}
+        <button
+          onClick={() => signOut({ callbackUrl: '/' })}
+          className="bg-neutral-900 text-white px-4 py-2 rounded"
+        >
+          Sair
+        </button>
+      <h1 className="text-2xl text-neutral-900 w-full flex">Olá, {session?.user?.name}</h1>
       </div>
     </header>
   );
