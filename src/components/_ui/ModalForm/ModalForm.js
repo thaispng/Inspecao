@@ -1,7 +1,39 @@
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-
+import { useState } from "react";
+import { useRouter } from "next/navigation"
 export default function ModalForm({ onClose }) {
+  const [nameConstructions, setNameConstructions] = useState('');
+  const [addressConstructions, setAddressConstructions] = useState('');
+  const [inicialDate, setInicialDate] = useState('');
+  const [finalDate, setFinalDate] = useState('');
+  const [status, setStatus] = useState('');
+  const [description, setDescription] = useState('');
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if(!nameConstructions || !addressConstructions || !inicialDate || !finalDate || !status || !description){
+      alert('Preencha todos os campos para continuar.')
+      return
+    }
+    try{
+      const res = await fetch('/api/Form', {
+        method: 'POST',
+        body: JSON.stringify({nameConstructions, addressConstructions, inicialDate, finalDate, status, description}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if(res.status === 201){
+       router.push('/home')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div
@@ -25,7 +57,7 @@ export default function ModalForm({ onClose }) {
               Preencha os campos abaixo para adicionar uma nova inspeção
             </p>
             <hr className="my-2" />
-            <form >
+            <form onSubmit={handleSubmit} >
               <div className="flex flex-col gap-4 p-2">
                 <div className="flex flex-col">
                   <label
@@ -34,7 +66,7 @@ export default function ModalForm({ onClose }) {
                   >
                     Nome da Obra
                   </label>
-                  <Input type="text" name="obra" id="obra" />
+                  <Input onChange={e => setNameConstructions(e.target.value)}  type="text" name="obra" id="obra" />
                 </div>
                 <div className="flex flex-col">
                   <label
@@ -43,7 +75,7 @@ export default function ModalForm({ onClose }) {
                   >
                     Endereço da obra
                   </label>
-                  <Input type="text" name="obra" id="obra" />
+                  <Input onChange={e => setAddressConstructions(e.target.value)} type="text" name="obra" id="obra" />
                 </div>
                 <div className="flex flex-row w-full justify-between ">
                   <div>
@@ -53,7 +85,7 @@ export default function ModalForm({ onClose }) {
                     >
                       Data inícial
                     </label>
-                    <Input type="date" name="obra" id="obra" />
+                    <Input onChange={e => setInicialDate(e.target.value)}  type="date" name="obra" id="obra" />
                   </div>
                   <div>
                     <label
@@ -62,7 +94,7 @@ export default function ModalForm({ onClose }) {
                     >
                       Data final
                     </label>
-                    <Input type="date" name="obra" id="obra" />
+                    <Input onChange={e => setFinalDate(e.target.value)} type="date" name="obra" id="obra" />
                   </div>
                 </div>
 
@@ -74,6 +106,7 @@ export default function ModalForm({ onClose }) {
                     Status
                   </label>
                   <select
+                    onChange={e => setStatus(e.target.value)}
                     name="status"
                     id="status"
                     className="border-basic-cinza-medio
@@ -89,10 +122,11 @@ export default function ModalForm({ onClose }) {
                     font-medium 
                     text-base"
                   >
-                    <option value="Selecione">Selecione</option>
+                    <option value="" disabled>Selecione</option>
                     <option value="Em andamento">Em andamento</option>
-                    <option value="Concluído">Concluído</option>
+                    <option value="Concluida">Concluído</option>
                     <option value="Pendente">Pendente</option>
+                    <option value="Cancelada">Pendente</option>
                   </select>
                 </div>
 
@@ -104,6 +138,7 @@ export default function ModalForm({ onClose }) {
                     Descrição
                   </label>
                   <textarea
+                    onChange={e => setDescription(e.target.value)}
                     name="descricao"
                     id="descricao"
                     className=" appearance-none  border-slate-200 rounded p-2 resize-none h-48 focus:outline-none border-2  focus:border-laranja-laranja-primary
