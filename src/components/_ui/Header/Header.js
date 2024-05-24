@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header
-      className="flex justify-between items-center p-4 bg-transparent text-white
+      className="flex justify-between items-center p-2 bg-transparent text-white
     shadow-md
     gap-4
     "
