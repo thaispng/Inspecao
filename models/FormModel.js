@@ -12,7 +12,6 @@ const FormInspecaoSchema = new mongoose.Schema({
   inicialDate: {
     type: String,
     required: true,
-    unique: true
   },
   finalDate: {
     type: String,
@@ -26,7 +25,22 @@ const FormInspecaoSchema = new mongoose.Schema({
   description:{
     type: String,
     required: true
-  
+  },
+  cep:{
+    type: String,
+    required: true
+  },
+  neighborhood:{
+    type: String,
+    required: true
+  },
+  city:{
+    type: String,
+    required: true
+  },
+  number:{
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
