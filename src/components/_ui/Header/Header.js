@@ -8,8 +8,8 @@ export default function Header() {
 
   return (
     <header
-      className="flex justify-between items-center p-2 bg-transparent text-white
-    shadow-md
+      className="flex justify-between items-center p-2 bg-[#fff] text-white
+    shadow-lg
     gap-4
     "
     >
@@ -22,7 +22,7 @@ export default function Header() {
         >
           Sair
         </button>
-      <h1 className="text-2xl text-neutral-900 w-full flex">Olá, {session?.user?.name}</h1>
+      <h3 className="text-2xl text-neutral-900 w-full flex">Olá, {session?.user?.name}</h3>
       </div>
     </header>
   );
