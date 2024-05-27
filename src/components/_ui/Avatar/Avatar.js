@@ -9,9 +9,10 @@ function getRandomColor() {
     return color;
 }
 
+const backgroundColor = getRandomColor();
+
 export default function Avatar({ name, lastName, size = 40 }) {
     const initials = `${name ? name[0] : ''}${lastName ? lastName[0] : ''}`;
-    const backgroundColor = getRandomColor();
 
     return (
         <div

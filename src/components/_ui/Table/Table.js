@@ -12,6 +12,7 @@ function Table() {
   const [inspections, setInspections] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const [selectedInspection, setSelectedInspection] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -23,6 +24,7 @@ function Table() {
  
   const handleClose = () => {
     setShowModal(false);
+    setSelectedInspection(null);
   };
 
   const handleOpen = () => {
@@ -31,8 +33,12 @@ function Table() {
 
   const handleEditClose = () => {
     setShowEditModal(false);
-    setSelectedInspection(null);
   };
+  
+const handleOnEdit = (inspectionToEdit) => {
+  setSelectedInspection(inspectionToEdit);
+  setShowModal(true);
+}
 
   const handleEditOpen = (inspection, event) => {
     if (showEditModal && selectedInspection === inspection) {
@@ -125,10 +131,10 @@ function Table() {
   return (
     <>
       <table className="table-fixed border-separate border bg-[#fff] border-slate-200 flex flex-col w-full h-[auto] items-center rounded p-2 shadow-sm">
-        <div className="w-full flex justify-between items-center gap-8 p-1">
-          <h3 className="font-medium text-2xl text-neutral-600">Inspeções</h3>
+        <div className="flex items-center justify-between w-full gap-8 p-1">
+          <h3 className="text-2xl font-medium text-neutral-600">Inspeções</h3>
           </div>
-          <div className="w-full flex justify-between items-center my-1">
+          <div className="flex items-center justify-between w-full my-1">
             <div className="w-[300px]">
               <Input placeholder="Pesquisar" 
               value={search}
@@ -144,10 +150,10 @@ function Table() {
         <hr className="my-2 bg-slate-50" />
 
         {showModal && (
-          <ModalForm onClose={handleClose} onSave={addInspection} />
+          <ModalForm onClose={handleClose} onSave={addInspection} inspection={selectedInspection} />
         )}
-        <thead className="w-full flex">
-          <tr className="w-full text-neutral-500 flex flex-row items-center gap-8 p-1">
+        <thead className="flex w-full">
+          <tr className="flex flex-row items-center w-full gap-8 p-1 text-neutral-500">
             <th className="font-medium text-base text-center w-[250px]">
               Data inícial
             </th>
@@ -170,11 +176,11 @@ function Table() {
           </tr>
         </thead>
         <hr className="my-2 bg-slate-50" />
-        <tbody className="w-full flex flex-col gap-6">
+        <tbody className="flex flex-col w-full gap-6">
           {paginatedInspections.map((inspection, index) => (
             <tr
               key={index}
-              className="text-neutral-500 flex flex-row items-center gap-8 w-full"
+              className="flex flex-row items-center w-full gap-8 text-neutral-500"
             >
               <td className="font-medium text-sm text-center w-[250px]">
                 {formatDate(inspection.inicialDate)}
@@ -192,10 +198,10 @@ function Table() {
                 {inspection.neighborhood}
               </td>
               <Status status={inspection.status} />
-              <td className="font-medium text-sm text-center w-[250px] relative">
+              <td className="font-medium text-sm text-center w-[250px] relative z-0">
                 <button
                   ref={editButtonRef}
-                  className="text-neutral-500 bg-neutral-100 p-1 rounded-sm"
+                  className="p-1 rounded-sm text-neutral-500 bg-neutral-100"
                   onClick={(event) => handleEditOpen(inspection, event)}
                 >
                   <Ellipsis size={22} />
@@ -204,9 +210,9 @@ function Table() {
             </tr>
           ))}
         </tbody>
-        <div className="w-full flex justify-center gap-2 p-2">
+        <div className="flex justify-center w-full gap-2 p-2">
           <button
-            className="text-neutral-500 bg-neutral-100 p-2 rounded-md"
+            className="p-2 rounded-md text-neutral-500 bg-neutral-100"
             onClick={handlePreviousPage}
             disabled={currentPage === 1}
           >
@@ -224,7 +230,7 @@ function Table() {
             </button>
           ))}
           <button
-            className="text-neutral-500 bg-neutral-100 p-2 rounded-md"
+            className="p-2 rounded-md text-neutral-500 bg-neutral-100"
             onClick={handleNextPage}
             disabled={endIndex >= inspections.length}
           >
@@ -245,6 +251,7 @@ function Table() {
             inspection={selectedInspection}
             onClose={handleEditClose}
             onDelete={deleteInspection}
+            onEdit={handleOnEdit}
           />
         </div>
       )}

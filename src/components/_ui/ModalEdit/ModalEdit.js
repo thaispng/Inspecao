@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Pencil, Trash } from 'lucide-react';
 
-export default function ModalEdit({ inspection, onClose, onDelete }) {
+export default function ModalEdit({ inspection, onClose, onDelete, onEdit }) {
     const modalRef = useRef();
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -40,7 +40,7 @@ export default function ModalEdit({ inspection, onClose, onDelete }) {
                 <Trash color='#d4d4d4' />
                 Deletar
             </button>
-            <button className='flex flex-row justify-between items-center w-[100px] text-neutral-300' onClick={onClose}>
+            <button className='flex flex-row justify-between items-center w-[100px] text-neutral-300' onClick={() => {onEdit(inspection); onClose()}}>
                 <Pencil />
                 Editar
             </button>
