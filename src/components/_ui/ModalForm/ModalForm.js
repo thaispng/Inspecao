@@ -185,7 +185,7 @@ export default function ModalForm({ onClose, onSave }) {
                     font-medium 
                     text-base"
                   >
-                    <option value="" disabled>Selecione</option>
+                    <option value="" >Selecione</option>
                     <option value="Em andamento">Em andamento</option>
                     <option value="Concluida">Concluído</option>
                     <option value="Pendente">Pendente</option>
