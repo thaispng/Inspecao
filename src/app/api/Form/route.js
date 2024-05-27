@@ -43,13 +43,12 @@ export async function GET(req) {
 
 export async function PUT(req) {
     try {
-        const { id } = req.query;
-        const { nameConstructions, addressConstructions, inicialDate, finalDate, status, description, cep, neighborhood, city, number } = await req.json();
+        const { id, nameConstructions, addressConstructions, inicialDate, finalDate, status, description, cep, neighborhood, city, number } = await req.json();
         if (!nameConstructions || !addressConstructions || !inicialDate || !finalDate || !status || !description || !cep || !neighborhood || !city || !number) {
             return NextResponse.json({ message: 'Preencha todos os campos para continuar.' }, { status: 400 });
         }
         await connectMongoDB();
-        const form = await FormInspecao.findById(id);
+        const form = await FormInspecao.findById(id).exec();
         form.nameConstructions = nameConstructions;
         form.addressConstructions = addressConstructions;
         form.inicialDate = inicialDate;
