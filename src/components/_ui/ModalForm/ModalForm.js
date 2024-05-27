@@ -211,8 +211,8 @@ export default function ModalForm({ onClose, onSave }) {
                   ></textarea>
                 </div>
               <div className="flex justify-end gap-4 ">
-                <Button onClick={onClose}>Cancelar</Button>
-                <Button  type="submit" >Salvar</Button>
+                <Button backgroundColor="bg-neutral-100 text-neutral-500 rounded-md hover:text-[#fff]" onClick={onClose}>Cancelar</Button>
+                <Button rounded="rounded-md"  type="submit" >Salvar</Button>
               </div>
               </div>
             </form>

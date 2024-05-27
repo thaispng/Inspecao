@@ -108,7 +108,7 @@ export default function RegisterPage() {
             placeholder="Senha"
             name="password"
           />
-          <Button type="submit">Registrar</Button>
+          <Button rounded="rounded" width="w-full" type="submit">Registrar</Button>
           {error && <div className="text-red-500 mt-2 font-bold">{error}</div>}
           <Link href="/" className="text-neutral-500 text-base">
             Já tem uma conta? Entrar

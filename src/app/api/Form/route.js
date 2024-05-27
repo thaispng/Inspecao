@@ -70,13 +70,17 @@ export async function PUT(req) {
 
 export async function DELETE(req) {
     try {
-        const { id } = req.query;
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get('id');
+        if (!id) {
+            return NextResponse.json({ message: 'ID da inspeção não fornecido.' }, { status: 400 });
+        }
         await connectMongoDB();
         await FormInspecao.findByIdAndDelete(id);
         return NextResponse.json({ message: 'Inspeção da obra deletada.' }, { status: 200 });
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Erro ao deletar inspeção da obra:', error);
         return NextResponse.json({ message: 'Erro ao deletar inspeção da obra.' }, { status: 500 });
     }
 }
+

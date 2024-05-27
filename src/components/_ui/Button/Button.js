@@ -1,8 +1,8 @@
 
-export default function Button({ children, backgroundColor, onClick }) {
+export default function Button({ children, backgroundColor, onClick, rounded, width }) {
     return (
-      <button
-        className={`${backgroundColor} text-branco px-4 py-2 rounded w-full bg-laranja-laranja-primary hover:bg-laranja-laranja-secondary`}
+      <button 
+        className={`${backgroundColor} ${rounded} ${width} flex flex-row justify-center items-center  px-4 py-2  bg-laranja-laranja-primary hover:bg-laranja-laranja-secondary`}
         onClick={onClick}
       >
         {children}

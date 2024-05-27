@@ -53,7 +53,7 @@ export default function LoginForm(){
         </div>
         <Input onChange={e => setEmail(e.target.value)} type="email" placeholder="Email" name="email" />
         <Input onChange={e => setPassword(e.target.value)} type="password" placeholder="Senha" name="password" />
-        <Button type="submit">Entrar</Button>
+        <Button rounded="rounded" width="w-full" type="submit">Entrar</Button>
         {error && (
           <div className="text-red-500 mt-2 font-bold">
             {error}
