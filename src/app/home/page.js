@@ -78,12 +78,12 @@ export default function Page() {
               {counts.concluida}
             </span>
           </Card>
-          <Card backgroundColor="bg-red-600" h1='Não conforme'>
+          <Card backgroundColor="bg-red-600" h1='Canceladas'>
             <span className="flex flex-row w-full text-neutral-600 font-semibold text-xl">
               {counts.cancelada}
             </span>
           </Card>
-          <Card backgroundColor="bg-zinc-600" h1='Pendente'>
+          <Card backgroundColor="bg-zinc-600" h1='Pendentes'>
             <span className="flex flex-row w-full text-neutral-600 font-semibold text-xl">
               {counts.pendente}
             </span>
