@@ -7,6 +7,8 @@ export default async function  Login() {
   const session = await getServerSession(authOptions);
 
   if (session) redirect("/home");
+
+ 
   
   return (
     <div className="inicial-screen flex justify-center items-center">

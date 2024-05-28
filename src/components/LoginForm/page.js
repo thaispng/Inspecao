@@ -25,7 +25,7 @@ export default function LoginForm(){
           });
     
           if (res.error) {
-            setError("Invalid Credentials");
+            setError("Email ou senha incorretos.");
             return;
           }
     
