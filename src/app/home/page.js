@@ -4,10 +4,10 @@ import Header from "@/components/_ui/Header/Header";
 import Card from "@/components/_ui/Card/Card";
 import Table from "@/components/_ui/Table/Table";
 import { useEffect, useState } from "react";
-import { useSession, signIn } from "next-auth/react"; // Import useSession and signIn
+import { useSession, signIn } from "next-auth/react"; 
 
 export default function Page() {
-  const { data: session, status } = useSession(); // Use useSession to get session data and status
+  const { data: session, status } = useSession(); 
   const [counts, setCounts] = useState({
     concluida: 0,
     cancelada: 0,
