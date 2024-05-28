@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# O Sistema de Gestão de Obra para Inspeção.
 
-## Getting Started
+## Índice
 
-First, run the development server:
+- [Sobre](#sobre)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+
+
+## Sobre
+
+O Sistema de Gestão de Obra para Inspeção é uma plataforma projetada para facilitar a gestão e inspeção de obras de construção. Este sistema permite que engenheiros, inspetores e gerentes de projeto acompanhem todas as etapas do processo de construção, garantindo que as normas de segurança e qualidade sejam seguidas.
+
+## Funcionalidades Principais
+
+- **Gerenciamento de Projetos**: Crie, edite e acompanhe projetos de construção.
+- **Planejamento de Inspeções**: Agende inspeções de rotina, garantindo que todas as fases da construção sejam inspecionadas de acordo com os regulamentos.
+- **Relatórios de Inspeção**: Gere relatórios detalhados das inspeções com observações e status de conformidade, facilitando a identificação e correção de problemas.
+- **Colaboração em Tempo Real**: Permita que todos os membros da equipe de projeto visualizem, editem e atualizem as informações em tempo real.
+- **Integração com MongoDB**: Aproveite a integração com o banco de dados MongoDB para armazenar e acessar dados de maneira eficiente e segura.
+
+## Tecnologias Utilizadas
+
+- **Next.js**: Framework React para construção de interfaces de usuário rápidas e escaláveis.
+- **NextAuth.js**: Biblioteca de autenticação para Next.js, fornecendo métodos seguros de login e gerenciamento de usuários.
+- **Tailwind CSS**: Framework de CSS para estilização rápida e customizável.
+- **MongoDB**: Banco de dados NoSQL para armazenamento eficiente e flexível de dados.
+- **Mongoose**: Biblioteca para modelagem de dados no MongoDB com Node.js, facilitando a criação e validação de esquemas de dados.
+
+## Pré-requisitos
+
+Liste as ferramentas e tecnologias necessárias para executar o projeto. Por exemplo:
+
+- Node.js
+- NPM ou Yarn
+- MongoDB
+
+## Instalação
+
+Instruções passo a passo sobre como configurar o ambiente de desenvolvimento e executar o projeto. Exemplo:
 
 ```bash
+# Clone o repositório
+git clone https://github.com/thaispng/Inspecao.git
+
+# Entre no diretório do projeto
+cd Inspecao
+
+# Instale as dependências
+npm install
+# ou
+yarn install
+
+# Configure as variáveis de ambiente
+cp .env.example .env
+# Edite o arquivo .env com suas configurações do MongoDB
+
+# Execute a aplicação em modo de desenvolvimento
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
